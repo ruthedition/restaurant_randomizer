@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :restaurants
 
   resources :food_types, only: [:index] do 
-    resources :restaurants, only: [:index], controller: 'food_types/restaurants'
+    resources :restaurants, only: [:index, :new], controller: 'food_types/restaurants'
   end
 
 end
