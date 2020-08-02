@@ -1,0 +1,14 @@
+
+<div class="form">
+  <%= form_for @restaurant do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<br>
+
+<div class="link">
+  <%= link_to "Go Home", restaurants_path %>
+</div>
