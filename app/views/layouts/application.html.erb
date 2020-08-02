@@ -10,11 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
 
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
     
-<br><%= link_to "Food Types", food_types_path %><br>
-<%= link_to "Restaurants", restaurants_path %>
+    <%= yield %>
+    
+    <br><%= link_to "Food Types", food_types_path %><br>
+    <%= link_to "Restaurants", restaurants_path %>
 
   </body>
 </html>
