@@ -30,7 +30,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def destroy
-    @restaurant.delete
+    @restaurant.destroy
     redirect_to restaurants_path
   end
 

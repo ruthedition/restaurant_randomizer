@@ -7,7 +7,6 @@ class FoodTypes::RestaurantsController < ApplicationController
   end 
 
   def new
-    food_type = RestaurantFoodType.find(@food_type.id)
     @restaurant = Restaurant.new(food_type_ids: [@food_type.id])
   end
 
