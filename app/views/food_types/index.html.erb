@@ -1,3 +1,8 @@
-<%= @food_types.each do |type| %>
-  <%= link_to type.name, type %>
+<h1>Find a Restaurant by Food Type</h1>
+
+<% @food_types.each do |type| %>
+  <ul>
+   <li> <%= type.name %><br> </li> 
+  </ul>
 <% end %>
+

@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def show
+    
   end
 
   def new 
@@ -41,7 +42,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def rest_params
-    params.require(:restaurant).permit(:name)
+    params.require(:restaurant).permit(:name, food_type_ids:[])
   end 
 
 
