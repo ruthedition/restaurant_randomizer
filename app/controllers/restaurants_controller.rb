@@ -14,10 +14,11 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
+    food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
     @restaurant = Restaurant.create(rest_params)
-    
     if @restaurant.save
-      redirect_to restaurant
+      @restaurant.food_types << food_type
+      redirect_to @restaurant
     else 
       flash[:alert] = "Your restaurant was not save!"
       render :new
@@ -28,7 +29,9 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
     if @restaurant.update(rest_params)
+      @restaurant.food_types << food_type
       redirect_to @restaurant
     else 
       redirect_to edit_restaurant_path(@restaurant)
