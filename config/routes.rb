@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:index, :new], controller: 'food_types/restaurants'
   end
 
-  resources :users, only: [:index] do 
+  resources :users, only: [:show] do 
     resources :restaurants, only: [:index, :new], controller: 'users/restaurants'
   end 
 
