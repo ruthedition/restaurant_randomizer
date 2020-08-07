@@ -1,5 +1,14 @@
+
+<% if logged_in? %>
+  <%= link_to "Add a Restaurant", new_restaurants_path %>
+  <%= link_to "Edit Account", edit_user_path %>
+  <%= link_to "My Restaurants", user_path %>
+  <%= link_to "Food Types", food_type_path %>
+<% end %>
+
 <%# search bar to search restaurants by type of food %>
 
 <%# button for a restaurant to be randomly selected %>
 
-<%# links to add a restaurant, edit account, restaurant list, food type list,  %>
+
+
