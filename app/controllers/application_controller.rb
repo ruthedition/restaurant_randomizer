@@ -20,11 +20,16 @@ class ApplicationController < ActionController::Base
     !!current_user
   end 
     
-  def authorized
+  def authorize
     if !logged_in?
       redirect_to login_path
     end 
   end 
     
+  def authenticate 
+    if !current_user
+      redirect_to current_user
+    end 
+  end 
   
 end
