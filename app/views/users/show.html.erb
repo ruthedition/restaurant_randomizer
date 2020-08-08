@@ -1,8 +1,14 @@
 <h1> Welcome <%= @user.username %> </h1>
 
-<h3>Here Are Your Restaurants</h3>
+<section class="randomizer">
+  <button class="button"> <%= link_to 'Where to Eat??', user_path(current_user, restaurant_id: @restaurants.shuffle.pop), method: :get %> </button><br><br>
+  <%= @restaurant.name if @restaurant %><br><br>
+</section>
 
-<%= render partial: "restaurants/restaurants", locals: {restaurants: @restaurants} %>
+<section class="search">
+
+</section>
+<%= link_to "Add Restaurant", new_user_restaurant_path(current_user) %><br>
 
 <%= link_to "Edit Account", edit_user_path %>
 

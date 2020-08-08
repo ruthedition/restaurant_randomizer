@@ -1,4 +1,4 @@
-class User::RestaurantsController < ApplicationController
+class Users::RestaurantsController < ApplicationController
   
   before_action :set_user, only: [:new, :index]
 

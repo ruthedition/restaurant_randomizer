@@ -4,6 +4,11 @@ class UsersController < ApplicationController
 
   def show 
     @restaurants = @user.restaurants
+    
+    if params[:restaurant_id]
+      
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    end 
   end 
 
   def new
@@ -11,10 +16,19 @@ class UsersController < ApplicationController
   end 
 
   def create
-    user = User.create(user_params)
-    params[:user][:password_digest]
-    session[:user_id] = user.id
-    redirect_to user_path(user)
+    @user = User.create(user_params)
+    if @user.save
+      params[:user][:password_digest]
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else 
+      if User.find_by(username: params[:user][:username]) || User.find(email: params[:user][:email])
+        flash[:alert] = "Looks like you've already signed up!"
+        redirect_to login_path
+      else 
+        render :new
+      end 
+    end 
   end 
 
   def edit
