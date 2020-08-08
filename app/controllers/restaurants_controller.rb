@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def show
+    @restaurant_notes = UserRestaurant.find_by(restaurant_id: @restaurant.id, user_id: current_user.id).notes
   end
 
   def new 
@@ -14,14 +15,14 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
+    # byebug
     @restaurant = Restaurant.create(rest_params)
     if @restaurant.save
       if !params[:restaurant][:food_types].nil?
         food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
         @restaurant.food_types << food_type
       end 
-      @restaurant.users << current_user
-      redirect_to user_path(current_user)
+      redirect_to user_restaurants_path(current_user)
     else 
       flash[:alert] = "Your restaurant was not save!"
       render :new
@@ -34,9 +35,13 @@ class RestaurantsController < ApplicationController
   def update
     food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
     if @restaurant.update(rest_params)
-      @restaurant.food_types << food_type
+      if !params[:restaurant][:food_types].nil?
+        food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
+        @restaurant.food_types << food_type
+      end 
       redirect_to @restaurant
     else 
+      flash[:alert] = "Your restaurant was not updated"
       redirect_to edit_restaurant_path(@restaurant)
     end 
   end 
@@ -53,7 +58,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def rest_params
-    params.require(:restaurant).permit(:name, food_type_ids:[])
+    params.require(:restaurant).permit(:name, food_type_ids:[], user_restaurants_attributes:[:id, :notes, :user_id])
   end 
 
 

@@ -1,9 +1,8 @@
-<h1><%= @restaurant.name %></h1>
+<h1><%= @restaurant.name %>: <%= @restaurant_notes %> </h1>
 <% @restaurant.food_types.each do |type| %>
   <ul>
   <li> <%= link_to type.name, food_type_restaurants_path(type) %> </li>
   </ul>
 <% end %>
-
 <%= link_to "Edit Restaurant", edit_restaurant_path %> <br>
 <%= link_to "Delete Restaurant", restaurant_path(@restaurant), method: :delete %>
