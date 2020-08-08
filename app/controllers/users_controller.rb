@@ -4,9 +4,7 @@ class UsersController < ApplicationController
 
   def show 
     @restaurants = @user.restaurants
-    
     if params[:restaurant_id]
-      
       @restaurant = Restaurant.find(params[:restaurant_id])
     end 
   end 
@@ -49,7 +47,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :search)
   end  
 
   def set_user
