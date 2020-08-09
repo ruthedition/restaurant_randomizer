@@ -3,5 +3,5 @@ class FoodType < ApplicationRecord
   validates :name, uniqueness: true 
   has_many :restaurant_food_types, dependent: :destroy
   has_many :restaurants, through: :restaurant_food_types
-  
+  scope :sort_alphbetical, ->{order(:name)}
 end

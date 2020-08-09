@@ -1,8 +1,15 @@
-<h1>Find a Restaurant by Food Type</h1>
+<div class="food-types">
 
-<% @food_types.each do |type| %>
-  <ul>
-   <li> <%= link_to type.name, food_type_restaurants_path(type) %> <%= type.restaurants.count %><br> </li> 
-  </ul>
-<% end %>
+<header>
+  <h1>Find a Restaurant by Food Type</h1>
+</header>
 
+<div id="food-type-list">
+  <% @food_types.each do |type| %>
+    <ul class="list">
+    <%= link_to type.name, food_type_restaurants_path(type) %> <%= type.restaurants.count %><br> 
+    </ul>
+  <% end %>
+</div>
+
+</div>

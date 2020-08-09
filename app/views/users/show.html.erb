@@ -1,11 +1,10 @@
-<h1> Welcome <%= @user.username %> </h1>
+<div class="user-show">
 
-<section class="randomizer">
-  <button class="button"> <%= link_to 'Where to Eat??', user_path(current_user, restaurant_id: @restaurants.shuffle.pop), method: :get %> </button><br><br>
-  <%= @restaurant.name if @restaurant %><br><br>
-</section>
+  <section id="randomizer">
+    <button class="button"> <%= link_to "#{current_user.username}, I can help you pick where to eat!", user_path(current_user, restaurant_id: @restaurants.shuffle.pop), method: :get %> </button><br><br>
+   <div id="restaurant">
+     <%= "Does #{@restaurant.name} sounds good?" if @restaurant %><br><br>
+   </div>
+  </section>
 
-<%= link_to "Add Restaurant", new_user_restaurant_path(current_user) %><br>
-
-<%= link_to "Edit Account", edit_user_path %>
-
+</div>

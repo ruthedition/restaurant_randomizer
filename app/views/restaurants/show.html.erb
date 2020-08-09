@@ -1,4 +1,6 @@
-<h1><%= @restaurant.name %>: <%= @restaurant_notes %> </h1>
+<header>
+  <h1><%= @restaurant.name %>: <%= @restaurant_notes %> </h1>
+</header>
 <% @restaurant.food_types.each do |type| %>
   <ul>
   <li> <%= link_to type.name, food_type_restaurants_path(type) %> </li>

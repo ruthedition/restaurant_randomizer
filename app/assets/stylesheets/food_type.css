@@ -1,0 +1,8 @@
+.food-types {
+}
+
+
+.food-types #food-type-list {
+  display: flex;
+  color: blue;
+}
