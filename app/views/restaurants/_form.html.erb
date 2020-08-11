@@ -8,7 +8,7 @@
     <%= f.fields_for :food_type, @restaurant.food_types.build do |food_type| %>
       <%= food_type.text_field :name, placeholder: "New Food Type" %><br><br>
     <% end %>
-    <%= f.fields_for :user_restaurants do |r| %>
+    <%= f.fields_for :user_restaurant do |r| %>
       <%= r.label :notes %>
       <%= r.text_field :notes %><br><br>
     <% end %>
