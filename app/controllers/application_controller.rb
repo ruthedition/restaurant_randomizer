@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :logged_in?, :current_user, :authorized
+  helper_method :logged_in?, :current_user, :authorized, :username
 
   def index
     if logged_in?
@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
       render '/homepage'
     end
   end 
-
 
   def current_user
     if session[:user_id]

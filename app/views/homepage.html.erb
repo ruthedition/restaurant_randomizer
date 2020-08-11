@@ -5,7 +5,21 @@
   </header>
 
   <section id="options">
-    <h1>Please <%= link_to "Login", login_path %> or <%= link_to "Sign Up", new_user_path %> </h1>
+    <h1>Please log in with:</h1>
+    <h1>
+    <%= link_to "Email", login_path %> <br>
+    <%= link_to('Facebook', '/auth/facebook') %><br>
 
+    <%= link_to "Sign Up", new_user_path %> </h1>
+    </h1>
   </section>
+
+  <% if session[:user_id] %>
+  <h1><%= @user.name %></h1>
+  <h2>Email: <%= @user.email %></h2>
+  <h2>Facebook UID: <%= @user.uid %></h2>
+  <img src="<%= @user.image %>">
+<% else %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>
 </div>

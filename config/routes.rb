@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create", as: "session"
   delete '/sessions', to: "sessions#destroy", as: "logout"
 
+  get '/auth/facebook/callback' => 'sessions#omni_create'
+
   resources :users
   resources :restaurants
   
