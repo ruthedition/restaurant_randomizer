@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
-    @restaurant = Restaurant.find_or_create_by(rest_params)
+    @restaurant = Restaurant.create(rest_params)
       if @restaurant.save
         if !params[:restaurant][:food_types].nil?
           food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
