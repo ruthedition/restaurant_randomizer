@@ -1,5 +1,5 @@
 <% if @restaurant.errors.any? %>
-    <ul>
+    <ul id="errors">
     <% @restaurant.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>

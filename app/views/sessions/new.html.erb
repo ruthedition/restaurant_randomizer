@@ -1,8 +1,9 @@
+
 <header>
   <h1>Login!</h1>
 </header>
 
-
+<div id="login-form">
 <%= form_tag login_path do %>
   <%= label_tag :username %>
   <%= text_field_tag :username %>
@@ -10,5 +11,5 @@
   <%= password_field_tag :password %>
   <%= submit_tag "Login"%>
 <% end %>
-
 <%= link_to "Sign Up", new_user_path %>
+</div>
