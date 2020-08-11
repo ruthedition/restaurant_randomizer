@@ -1,8 +1,14 @@
-.food-types {
+.food-types header h1 {
+  padding-bottom: 4px;
 }
 
 
 .food-types #food-type-list {
   display: flex;
-  color: blue;
+    color: darkblue;
+    width: 100%;
+    justify-content: space-around;
+    width: 100%;
+    font-size: large;
 }
+
