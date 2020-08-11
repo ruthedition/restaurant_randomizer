@@ -33,16 +33,11 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    # byebug
-    food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
     if @restaurant.update(rest_params)
-      if !params[:restaurant][:food_types].nil?
-        food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
-        @restaurant.food_types << food_type
-      end 
       redirect_to @restaurant
     else 
       flash[:alert] = "Your restaurant was not updated"
+      flash[:alert] = @restaurant.errors.full_messages
       redirect_to edit_restaurant_path(@restaurant)
     end 
   end 
@@ -59,7 +54,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def rest_params
-    params.require(:restaurant).permit(:name, food_type_ids:[], user_restaurants_attributes:[:notes])
+    params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[], user_restaurants_attributes:[:id, :notes, :user_id])
   end 
 
 
