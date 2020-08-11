@@ -21,7 +21,7 @@
         <br>
         <%= link_to "Home", user_path(current_user) %>
         <%= link_to "Food Types", food_types_path %><br>
-        <%= link_to "Restaurants", user_restaurants_path(current_user) %><br>
+        <%= link_to "Restaurants", profile_path(current_user) %><br>
         <%= link_to "Add Restaurant", new_user_restaurant_path(current_user) %><br>
         <%= link_to "Edit Account", edit_user_path(current_user) %>
         <%= link_to "Logout", logout_path, method: :delete %><br>

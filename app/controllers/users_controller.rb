@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:profile, :show, :edit, :update]
+
+  def profile
+    @restaurants = @user.restaurants
+  end
 
   def show 
     @restaurants = @user.restaurants
