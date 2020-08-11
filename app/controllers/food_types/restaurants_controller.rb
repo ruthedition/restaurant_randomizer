@@ -3,7 +3,7 @@ class FoodTypes::RestaurantsController < ApplicationController
   before_action :set_food_type, only: [:new, :index]
 
   def index
-    @restaurants = @food_type.restaurants
+    @restaurants = FoodType.user_restaurants(@food_type.id, current_user.id)
   end 
 
   def new

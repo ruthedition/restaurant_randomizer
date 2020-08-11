@@ -7,5 +7,5 @@ class Restaurant < ApplicationRecord
   has_many :users, through: :user_restaurants
   accepts_nested_attributes_for :user_restaurants, allow_destroy: true
   scope :sort_alphbetical, ->{order(:name)}
-
+  
 end

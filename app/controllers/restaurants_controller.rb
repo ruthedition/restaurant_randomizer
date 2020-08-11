@@ -15,18 +15,17 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
-    # byebug
-    @restaurant = Restaurant.create(rest_params)
-    if @restaurant.save
-      if !params[:restaurant][:food_types].nil?
-        food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
-        @restaurant.food_types << food_type
-      end 
-      redirect_to user_restaurants_path(current_user)
-    else 
-      flash[:alert] = "Your restaurant was not save!"
-      render :new
-    end 
+    @restaurant = Restaurant.find_or_create_by(rest_params)
+      if @restaurant.save
+        if !params[:restaurant][:food_types].nil?
+          food_type = FoodType.new(name: params[:restaurant][:food_type][:name])
+          @restaurant.food_types << food_type
+        end 
+        redirect_to user_restaurants_path(current_user)
+      else 
+        flash[:alert] = "Your restaurant was not save!"
+        render :new
+      end  
   end
 
   def edit    
