@@ -1,5 +1,5 @@
 class Users::RestaurantsController < ApplicationController
-  
+  # remove controller
   before_action :set_user, only: [:new, :index]
 
   def index

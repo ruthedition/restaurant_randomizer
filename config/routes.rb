@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:index, :new], controller: 'users/restaurants'
   end 
 
+  # remove u and r nest
 end
 
 
