@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = current_user.restaurants.new(rest_params)
     byebug
-    @restaurant.user_restaurants.first.user_id = current_user.id
+    # @restaurant.user_restaurants.first.user_id = current_user.id
     if @restaurant.save
 
       if !params[:restaurant][:food_types].nil?
