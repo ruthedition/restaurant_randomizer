@@ -8,4 +8,9 @@ class Restaurant < ApplicationRecord
   accepts_nested_attributes_for :user_restaurants, allow_destroy: true
   scope :sort_alphbetical, ->{order(:name)}
   
+  def food_type=(food_type)
+    unless food_type[:name].empty?
+      self.food_types.build(name: food_type[:name])
+    end
+  end
 end

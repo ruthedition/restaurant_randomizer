@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :restaurants, through: :user_restaurants
   accepts_nested_attributes_for :user_restaurants, allow_destroy: true
   has_secure_password
+
+  
 end
