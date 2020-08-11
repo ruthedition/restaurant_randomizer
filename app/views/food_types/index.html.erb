@@ -7,7 +7,7 @@
 <div id="food-type-list">
   <% @food_types.each do |type| %>
     <ul class="list">
-    <%= link_to type.name, food_type_restaurants_path(type) %> <%= type.restaurants.count %><br> 
+    <%= link_to type.name, food_type_restaurants_path(type) %><br> 
     </ul>
   <% end %>
 </div>

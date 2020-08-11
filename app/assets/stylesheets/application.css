@@ -45,6 +45,8 @@ header {
   padding-bottom: 10px;
 }
 
+
+
 .list {
   display: flex;
 }
@@ -140,4 +142,26 @@ header {
   border-radius: 17px;
 
 }
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: large;
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+
+.link a {
+  color: white;
+  align-items: center;
+  font-size: larger;
+  text-decoration: none;
+}
+
+.link a:hover {
+  color: darkblue;
+}
+.link a:unvisted {
+  color: white;
 
