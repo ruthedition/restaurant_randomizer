@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def show
-    @restaurant_notes = UserRestaurant.find_by(restaurant_id: @restaurant.id, user_id: current_user.id).notes
+    @user_restaurant = UserRestaurant.find_by(restaurant_id: @restaurant.id, user_id: current_user.id)
   end
 
   def new 
@@ -15,15 +15,22 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
-    byebug
-    @restaurant = current_user.restaurants.new(rest_params)
-    @restaurant.user_restaurants.first.user_id = current_user.id
-    if @restaurant.save
-      redirect_to @restaurant
+
+    @restaurant = Restaurant.find_by(name: params[:restaurant][:name])
+    if @restaurant
+      @restaurant.user_restaurants.create(user_id: current_user.id, notes: params[:restaurant][:user_restaurants_attributes]["0"]["notes"])
+      if @restaurant.save
+        redirect_to @restaurant
+      end  
+    elsif @restaurant = current_user.restaurants.new(rest_params)
+      @restaurant.user_restaurants.first.user_id = current_user.id
+      if @restaurant.save
+        redirect_to @restaurant
+      end 
     else 
       flash[:alert] = "Your restaurant was not save!"
-      render :new
-    end  
+      render :new  
+    end
   end
 
   def edit    
@@ -40,8 +47,8 @@ class RestaurantsController < ApplicationController
   end 
 
   def destroy
-    @restaurant.destroy
-    redirect_to restaurants_path
+    UserRestaurant.find_by(restaurant_id: @restaurant.id, user_id: current_user.id).destroy
+    redirect_to profile_path
   end
 
   private 
@@ -49,9 +56,13 @@ class RestaurantsController < ApplicationController
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end 
+  
+  # def notes
+  #   params[:restaurant][:user_restaurants_attributes]["0"]["notes"]
+  # end 
 
   def rest_params
-    params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[], user_restaurants_attributes:[:id, :notes, :user_id])
+    params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[], user_restaurants_attributes:[:notes])
   end 
 
 
