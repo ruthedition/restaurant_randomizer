@@ -7,7 +7,7 @@ class FoodTypes::RestaurantsController < ApplicationController
   end 
 
   def new
-    @restaurant = Restaurant.new(food_type_ids: [@food_type.id])
+    @restaurant = Restaurant.new(food_type_ids: [@food_type.id], user_ids: [current_user.id])
   end
 
   private

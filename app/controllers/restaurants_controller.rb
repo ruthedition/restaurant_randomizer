@@ -15,6 +15,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
+    byebug
     @restaurant = current_user.restaurants.new(rest_params)
     @restaurant.user_restaurants.first.user_id = current_user.id
     if @restaurant.save
