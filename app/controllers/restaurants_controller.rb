@@ -15,12 +15,14 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
-
     @restaurant = Restaurant.find_by(name: params[:restaurant][:name])
     if @restaurant
       @restaurant.user_restaurants.create(user_id: current_user.id, notes: params[:restaurant][:user_restaurants_attributes]["0"]["notes"])
-      if @restaurant.save
+      if @restaurant.update(rest_params)
         redirect_to @restaurant
+      else 
+        flash[:alert] = "Your restaurant was not save!"
+        render :new 
       end  
     elsif @restaurant = current_user.restaurants.new(rest_params)
       @restaurant.user_restaurants.first.user_id = current_user.id
