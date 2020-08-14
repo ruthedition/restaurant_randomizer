@@ -1,0 +1,19 @@
+form input[type="text" i] {
+  border: none;
+  border-bottom: 2px solid darkblue;
+  background: white;
+
+}
+form input[type="email" i]  {
+  border: none;
+  border-bottom: 2px solid darkblue;
+  background: white;
+
+}
+form input[type="password" i] {
+  border: none;
+  border-bottom: 2px solid darkblue;
+  background: white;
+
+}
+  

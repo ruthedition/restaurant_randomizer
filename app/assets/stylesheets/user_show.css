@@ -1,0 +1,28 @@
+.user-show {
+  text-align: center;
+}
+.user-show .button a {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-family: cursive;
+}
+
+.user-show .button {
+  color: white;
+  font-size: x-large;
+  margin-top: 137px;
+  border: 2px solid green;
+  border-radius: 10px;
+  position: unset;
+  padding: 10px;
+  background: darkblue;
+}
+
+.user-show #randomizer #restaurant {
+  font-size: xx-large;
+  font-weight: 100;
+  font-family: cursive;
+  margin-top: 77px;
+
+}

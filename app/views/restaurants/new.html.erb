@@ -1,4 +1,15 @@
-<h1>Add a New Restaurant</h1>
+<% if @restaurant.errors.any? %>
+    <ul id="errors">
+    <% @restaurant.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<header>
+  <h1>Select a Restaurant to Add To Your List or Create One</h1>
+</header>
+
 
 <br>
 

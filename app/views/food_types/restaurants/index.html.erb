@@ -1,0 +1,9 @@
+<header>
+  <h1><%= @food_type.name %> Restaurants</h1>
+</header>
+
+<%= render partial: "restaurants/restaurants", locals: {restaurants: @restaurants} %>
+
+<div class="link">
+  <%= link_to "Add Restaurant", new_food_type_restaurant_path(@food_type) %>
+</div>

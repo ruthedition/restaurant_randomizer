@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <% flash.each do |type, msg| %>
+      <div id="flash">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <div class="nav">
+      <% if logged_in? %>
+        <br>
+        <%= link_to "Home", user_path(current_user) %>
+        <%= link_to "Food Types", food_types_path %><br>
+        <%= link_to "Restaurants", profile_path(current_user) %><br>
+        <%= link_to "Add Restaurant", new_restaurant_path %><br>
+        <%= link_to "Edit Account", edit_user_path(current_user) %>
+        <%= link_to "Logout", logout_path, method: :delete %><br>
+      <% end %>
+    </div>
     <%= yield %>
+
+    
+
   </body>
 </html>

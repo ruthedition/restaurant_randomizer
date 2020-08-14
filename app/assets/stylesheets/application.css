@@ -13,3 +13,155 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+
+}
+
+body {
+  height: inherit;
+  background-image: linear-gradient(rgb(204,237,235), darkblue);
+
+}
+
+.gradient-background {
+  background-image: linear-gradient(rgb(204,237,235), darkblue);
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  text-align: center;
+  font-family: cursive;
+  color: white;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding-top: 83px;
+  padding-bottom: 10px;
+}
+
+
+
+.list {
+  display: flex;
+}
+
+.list a {
+  color: darkblue;
+  align-items: center;
+  font-size: larger;
+  text-decoration: none;
+}
+
+.list a:hover {
+  color: green;
+}
+.list a:unvisted {
+  color: darkblue;
+}
+
+.homepage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+
+.homepage #center-header {
+  width: 100%;
+  text-align: center;
+  color: rgb(17 58 121);
+  padding: 1px;
+  font-family: cursive;
+  font-size: xx-large;
+  width: 100%;
+  -webkit-text-stroke: .5px black;
+	-webkit-text-fill-color: rgb(17 58 121);
+}
+
+.homepage #options {
+  text-align: center;
+  color: white;
+  font-family: cursive;
+  padding: 8%;
+}
+
+.homepage #options a {
+  text-decoration-line: none;
+  color: white;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 25%;
+  justify-content: space-around;
+}
+
+#errors {
+  display: flex;
+  justify-content: start;
+  position: absolute;
+  margin-top: 10%;
+}
+
+#flash {
+  display: flex;
+  justify-content: start;
+  position: absolute;
+  margin-top: 5%;
+}
+.nav {
+  text-decoration: none;
+  display: flex;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.nav a {
+  align-content: center;
+  color: white;
+  margin-left: 10px;
+  margin-right: 45px;
+  padding: inherit;
+  text-decoration: none;
+  font-size: large;
+  border: 2px solid green;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: darkblue;
+  border-radius: 17px;
+
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: large;
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+
+.link a {
+  color: white;
+  align-items: center;
+  font-size: larger;
+  text-decoration: none;
+}
+
+.link a:hover {
+  color: darkblue;
+}
+.link a:unvisted {
+  color: white;
+

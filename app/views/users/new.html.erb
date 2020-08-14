@@ -1,0 +1,14 @@
+<header>
+  <h1>Sign Up!</h1> 
+</header>
+
+<div>
+  <% if @user.errors.any? %>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li id="errors"><%= msg %></li>
+      <% end %>
+      </ul>
+  <% end %>
+</div>
+<%= render 'form' %>

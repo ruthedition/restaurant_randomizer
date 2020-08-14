@@ -1,0 +1,10 @@
+<div class="user-show">
+  <%= image_tag("randomizerpage.png") %>
+  <section id="randomizer">
+  <button class="button"> <%= link_to "#{current_user.username}, I can help you pick where to eat!", user_path(current_user, restaurant_id: @restaurants.shuffle.pop), method: :get %> </button><br><br>
+   <div id="restaurant">
+     <%= "Does #{@restaurant.name} sounds good?" if @restaurant %><br><br>
+   </div>
+  </section>
+
+</div>

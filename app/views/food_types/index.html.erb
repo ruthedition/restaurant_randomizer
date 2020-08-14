@@ -1,0 +1,15 @@
+<div class="food-types">
+
+<header>
+  <h1>Find a Restaurant by Food Type</h1>
+</header>
+
+<div id="food-type-list">
+  <% @food_types.each do |type| %>
+    <ul class="list">
+    <%= link_to type.name, food_type_restaurants_path(type) %><br> 
+    </ul>
+  <% end %>
+</div>
+
+</div>
