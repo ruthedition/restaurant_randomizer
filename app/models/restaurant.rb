@@ -13,4 +13,8 @@ class Restaurant < ApplicationRecord
       self.food_types.build(name: food_type[:name])
     end
   end
+
+  def find_by_current_user(user)
+    self.user_restaurants.find_by(user_id: user.id)
+  end
 end

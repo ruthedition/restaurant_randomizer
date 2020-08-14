@@ -15,8 +15,7 @@ class RestaurantsController < ApplicationController
   end 
 
   def create
-    @restaurant = Restaurant.find_by(name: params[:restaurant][:name])
-    if @restaurant
+    if @restaurant = Restaurant.find_or_create_by(name: params[:restaurant][:name])
       @restaurant.user_restaurants.create(user_id: current_user.id, notes: params[:restaurant][:user_restaurants_attributes]["0"]["notes"])
       if @restaurant.update(rest_params)
         redirect_to @restaurant
@@ -35,11 +34,13 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def edit    
+  def edit 
+    @restaurant_user = @restaurant.find_by_current_user(current_user)
   end
 
   def update
     if @restaurant.update(rest_params)
+      @restaurant.user_restaurants.update(notes: params[:restaurant][:user_restaurants_attributes]["0"]["notes"])
       redirect_to @restaurant
     else 
       flash[:alert] = "Your restaurant was not updated"
@@ -50,7 +51,7 @@ class RestaurantsController < ApplicationController
 
   def destroy
     UserRestaurant.find_by(restaurant_id: @restaurant.id, user_id: current_user.id).destroy
-    redirect_to profile_path
+    redirect_to profile_path(current_user)
   end
 
   private 
@@ -59,12 +60,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end 
   
-  # def notes
-  #   params[:restaurant][:user_restaurants_attributes]["0"]["notes"]
-  # end 
-
   def rest_params
-    params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[], user_restaurants_attributes:[:notes])
+    params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[])
   end 
 
 
