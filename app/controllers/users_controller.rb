@@ -8,9 +8,7 @@ class UsersController < ApplicationController
 
   def show 
     @restaurants = @user.restaurants
-    if params[:restaurant_id]
-      @restaurant = Restaurant.find(params[:restaurant_id])
-    end 
+    @restaurant = Restaurant.find(params[:restaurant_id]) if params[:restaurant_id]
   end 
 
   def new

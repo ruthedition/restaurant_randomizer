@@ -35,7 +35,7 @@ class RestaurantsController < ApplicationController
   end
 
   def edit 
-    @restaurant_user = @restaurant.find_by_current_user(current_user)
+    @restaurant_user = UserRestaurant.find_by_current_user_and_restaurant(current_user.id, @restaurant.id)
   end
 
   def update
@@ -63,6 +63,5 @@ class RestaurantsController < ApplicationController
   def rest_params
     params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[])
   end 
-
 
 end
