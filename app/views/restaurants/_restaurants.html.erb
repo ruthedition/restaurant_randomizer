@@ -1,5 +1,5 @@
 <div class="restaurant-list">
-  <% @restaurants.each do |restaurant| %>
+  <% @restaurants.sort_alphabetical.each do |restaurant| %>
     <ul class="list">
       <%= link_to restaurant.name, restaurant %><br><br>
     </ul>

@@ -16,20 +16,18 @@ class RestaurantsController < ApplicationController
 
   def create
     if @restaurant = Restaurant.find_or_create_by(name: params[:restaurant][:name])
-      @restaurant.user_restaurants.create(user_id: current_user.id, notes: params[:restaurant][:user_restaurants_attributes]["0"]["notes"])
       if @restaurant.update(rest_params)
         redirect_to @restaurant
       else 
-        flash[:alert] = "Your restaurant was not save!"
+        flash[:alert] = "Your restaurant was not saved!"
         render :new 
       end  
     elsif @restaurant = current_user.restaurants.new(rest_params)
-      @restaurant.user_restaurants.first.user_id = current_user.id
       if @restaurant.save
         redirect_to @restaurant
       end 
     else 
-      flash[:alert] = "Your restaurant was not save!"
+      flash[:alert] = "Your restaurant was not saved!"
       render :new  
     end
   end
@@ -40,7 +38,6 @@ class RestaurantsController < ApplicationController
 
   def update
     if @restaurant.update(rest_params)
-      @restaurant.user_restaurants.update(notes: params[:restaurant][:user_restaurants_attributes]["0"]["notes"])
       redirect_to @restaurant
     else 
       flash[:alert] = "Your restaurant was not updated"
@@ -61,7 +58,7 @@ class RestaurantsController < ApplicationController
   end 
   
   def rest_params
-    params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[])
+    params.require(:restaurant).permit(:name, food_type:[:name], food_type_ids:[], user_restaurants_attributes:[:id, :notes, :user_id])
   end 
 
 end

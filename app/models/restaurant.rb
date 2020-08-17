@@ -6,7 +6,7 @@ class Restaurant < ApplicationRecord
   has_many :user_restaurants, dependent: :destroy 
   has_many :users, through: :user_restaurants
   accepts_nested_attributes_for :user_restaurants, allow_destroy: true
-  scope :sort_alphbetical, ->{order(:name)}
+  scope :sort_alphabetical, ->{order(:name)}
   
   def food_type=(food_type)
     unless food_type[:name].empty?

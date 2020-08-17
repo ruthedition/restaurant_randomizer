@@ -14,6 +14,7 @@
       <%= food_type.text_field :name, placeholder: "New Food Type" %><br><br>
     <% end %>
     <%= f.fields_for :user_restaurants, @restaurant_user do |r| %>
+      <%= r.hidden_field :user_id, value: current_user.id %>
       <%= r.label :notes %>
       <%= r.text_field :notes %><br><br>
     <% end %>
