@@ -45,7 +45,9 @@ header {
   padding-bottom: 10px;
 }
 
-
+header#name-note {
+  padding: 0px;
+}
 
 .list {
   display: flex;
@@ -157,6 +159,7 @@ header {
   align-items: center;
   font-size: larger;
   text-decoration: none;
+  padding-right: 10px;
 }
 
 .link a:hover {
@@ -164,4 +167,5 @@ header {
 }
 .link a:unvisted {
   color: white;
+}
 
