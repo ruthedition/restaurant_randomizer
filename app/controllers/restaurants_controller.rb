@@ -41,7 +41,6 @@ class RestaurantsController < ApplicationController
       redirect_to @restaurant
     else 
       flash[:alert] = "Your restaurant was not updated"
-      flash[:alert] = @restaurant.errors.full_messages
       redirect_to edit_restaurant_path(@restaurant)
     end 
   end 

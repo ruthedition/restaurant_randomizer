@@ -1,3 +1,13 @@
+<div>
+  <% if @restaurant.errors.any? %>
+      <ul>
+      <% @restaurant.errors.full_messages.each do |msg| %>
+        <li id="errors"><%= msg %></li>
+      <% end %>
+      </ul>
+  <% end %>
+</div>
+
 <header>
   <h1>Edit <%= @restaurant.name %></h1>
 </header>
